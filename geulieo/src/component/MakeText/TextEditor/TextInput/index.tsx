@@ -1,12 +1,34 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import AddIcon from "../../../../assets/TextEditor/AddIcon.svg";
+import { textStateValue } from "../../../../modules/atom/Text";
 
 const TextInput: FC = () => {
+  const [inputValue, setInputValue] = useState<string>("");
+  const setTextState = useSetRecoilState(textStateValue);
+
+  const addText = () => {
+    const textInputValue = {
+      color: "#ffffff",
+      value: inputValue,
+      fontSize: 16,
+      align: "center",
+      x: 0,
+      y: 0,
+    };
+    setTextState((textState) => [...textState, textInputValue]);
+    setInputValue("");
+  };
+
   return (
     <Container>
-      <Input placeholder="텍스트를 입력하세요." />
-      <AddButton src={AddIcon} alt="add button" />
+      <Input
+        placeholder="텍스트를 입력하세요."
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <AddButton src={AddIcon} alt="add button" onClick={addText} />
     </Container>
   );
 };

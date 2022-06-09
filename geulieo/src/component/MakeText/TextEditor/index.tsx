@@ -1,12 +1,15 @@
 import React, { FC } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { textStateValue } from "../../../modules/atom/Text";
 import { imageStateValue } from "../../../modules/atom/TextEditor";
 import ChangeStyle from "./ChangeStyle";
 import TextInput from "./TextInput";
+import TextView from "./TextView";
 
 const TextEditor: FC = () => {
   const imageState = useRecoilValue(imageStateValue);
+  const textState = useRecoilValue(textStateValue);
 
   return (
     <>
@@ -22,6 +25,9 @@ const TextEditor: FC = () => {
                 radius={imageState.radius}
               />
             </div>
+            {textState.map((v, i) => (
+              <TextView {...v} key={i} />
+            ))}
           </ImageContainer>
           <ChangeStyleContainer>
             <ChangeStyle />
