@@ -11,10 +11,6 @@ const Main: FC = () => {
     navigate("/make");
   };
 
-  const onClickCollection = (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigate("/collection");
-  };
-
   return (
     <Wrapper>
       <Title>
@@ -28,17 +24,10 @@ const Main: FC = () => {
       <ButtonContainer>
         <DefaultButton
           title="제작하기"
-          width={170}
-          height={50}
-          fontSize={18}
+          width={200}
+          height={60}
+          fontSize={22}
           onClickFunction={onClickMake}
-        />
-        <DefaultButton
-          title="다른 글귀 보러가기"
-          width={170}
-          height={50}
-          fontSize={18}
-          onClickFunction={onClickCollection}
         />
       </ButtonContainer>
     </Wrapper>
@@ -70,8 +59,5 @@ const ImageWrapper = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  width: 390px;
-  display: flex;
-  justify-content: space-between;
   margin-top: 80px;
 `;

@@ -16,14 +16,6 @@ const Header: FC = () => {
         >
           <Logo src={logo} alt="logo" />
         </Link>
-        <NavContainer>
-          <Link to="/collection" style={{ marginRight: "50px" }}>
-            <NavContent>글귀모음</NavContent>
-          </Link>
-          <Link to="/make">
-            <NavContent>글귀제작</NavContent>
-          </Link>
-        </NavContainer>
       </Content>
     </Container>
   );
@@ -49,22 +41,6 @@ const Content = styled.div`
 
   & img {
     cursor: pointer;
-  }
-`;
-
-const NavContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const NavContent = styled.a`
-  font-size: 16px;
-  color: #95e1d3;
-  cursor: pointer;
-
-  & + & {
-    margin-left: 30px;
   }
 `;
 
