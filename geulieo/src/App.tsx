@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import MainPage from "./container/Main";
 import MakeText from "./container/Make";

@@ -61,17 +61,22 @@ export const FontColorContainer = styled.div`
   align-items: center;
 `;
 
-export const Color = styled.div`
+export const Color = styled.div<{
+  color: string;
+}>`
   width: 15px;
   height: 15px;
   margin-right: 5px;
-  background-color: #ee6969;
+  background-color: ${({ color }) => color};
+  border: 1px solid #c4c4c4;
 `;
 
 export const ColorInput = styled.input`
   width: 60px;
+  height: 20px;
   font-size: 14px;
   color: black;
   border: none;
   outline: none;
+  background-color: white;
 `;

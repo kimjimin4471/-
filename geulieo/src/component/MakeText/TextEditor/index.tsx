@@ -1,6 +1,7 @@
 import React, { FC } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { currentCursorStateValue } from "../../../modules/atom/CurrentCursor";
 import { textStateValue } from "../../../modules/atom/Text";
 import { imageStateValue } from "../../../modules/atom/TextEditor";
 import ChangeStyle from "./ChangeStyle";
@@ -10,6 +11,11 @@ import TextView from "./TextView";
 const TextEditor: FC = () => {
   const imageState = useRecoilValue(imageStateValue);
   const textState = useRecoilValue(textStateValue);
+  const setCurrentCursor = useSetRecoilState(currentCursorStateValue);
+
+  const changeCurrentCursor = (e: React.MouseEvent<HTMLImageElement>) => {
+    if (e.target === e.currentTarget) setCurrentCursor(-1);
+  };
 
   return (
     <>
@@ -23,10 +29,11 @@ const TextEditor: FC = () => {
                 width={imageState.width}
                 height={imageState.height}
                 radius={imageState.radius}
+                onClick={changeCurrentCursor}
               />
             </div>
             {textState.map((v, i) => (
-              <TextView {...v} key={i} />
+              <TextView {...v} index={i} key={i} />
             ))}
           </ImageContainer>
           <ChangeStyleContainer>
