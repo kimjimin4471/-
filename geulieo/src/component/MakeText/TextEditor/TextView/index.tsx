@@ -43,6 +43,7 @@ const Text = styled.span<{
   text-align: ${({ align }) => align};
   left: ${({ x }) => `${x}px`};
   top: ${({ y }) => `${y}px`};
+  font-size: ${({ fontSize }) => `${fontSize}px`};
 `;
 
 export default TextView;

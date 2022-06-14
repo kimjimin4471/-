@@ -44,16 +44,6 @@ export const DeleteButton = styled.img`
   align-self: center;
 `;
 
-export const AlignContainer = styled.span`
-  width: 55px;
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const AlignIcon = styled.img`
-  cursor: pointer;
-`;
-
 export const FontColorContainer = styled.div`
   margin-top: 10px;
   width: 100%;

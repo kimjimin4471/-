@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, forwardRef, useRef } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { currentCursorStateValue } from "../../../modules/atom/CurrentCursor";
@@ -8,7 +8,7 @@ import ChangeStyle from "./ChangeStyle";
 import TextInput from "./TextInput";
 import TextView from "./TextView";
 
-const TextEditor: FC = () => {
+const TextEditor: FC<any> = forwardRef<HTMLDivElement>((_, ref) => {
   const imageState = useRecoilValue(imageStateValue);
   const textState = useRecoilValue(textStateValue);
   const setCurrentCursor = useSetRecoilState(currentCursorStateValue);
@@ -21,7 +21,7 @@ const TextEditor: FC = () => {
     <>
       {imageState.url ? (
         <Container>
-          <ImageContainer>
+          <div id="imageContainer" ref={ref}>
             <div>
               <Image
                 src={imageState.url}
@@ -35,7 +35,7 @@ const TextEditor: FC = () => {
             {textState.map((v, i) => (
               <TextView {...v} index={i} key={i} />
             ))}
-          </ImageContainer>
+          </div>
           <ChangeStyleContainer>
             <ChangeStyle />
             <TextInput />
@@ -46,7 +46,7 @@ const TextEditor: FC = () => {
       )}
     </>
   );
-};
+});
 
 export default TextEditor;
 
@@ -59,16 +59,17 @@ const Container = styled.div`
   margin-top: 25px;
   display: flex;
   align-items: center;
-`;
 
-const ImageContainer = styled.div`
-  position: relative;
-  margin-left: 80px;
-  width: 600px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  & #imageContainer {
+    position: relative;
+    margin-left: 80px;
+    width: 600px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
 `;
 
 const Image = styled.img<{

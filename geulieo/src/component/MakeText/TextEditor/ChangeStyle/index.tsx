@@ -7,7 +7,6 @@ import ChangeText from "./ChangeText";
 
 const ChangeStyle: FC = () => {
   const currentCursor = useRecoilValue(currentCursorStateValue);
-  console.log(currentCursor);
 
   return (
     <Container>
